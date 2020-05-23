@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f0f0;
+    color: #333 ;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    width: 360px;
+    height: 32px;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    font-size: 16px;
+    color: #333;
+    padding: 2px;
+}
+
+textarea {
+    width: 360px;
+    height: 160px;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    font-size: 16px;
+    color: #333;
+    padding: 2px;
+    resize: none;
+}
+
+.adicinar {
+    min-width: 120px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #28a745;
+    border: solid 1px #28a745;
+    transition: all 0.2s;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.adicinar:hover {
+    background-color: #218838;
+    border: solid 1px #218838;
+}
