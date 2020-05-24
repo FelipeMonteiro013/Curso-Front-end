@@ -1,8 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
-
-import Header from './components/Header'
 import Login from './pages/Login';
 import Cursos from './pages/Cursos';
 import Turmas from './pages/Turmas'

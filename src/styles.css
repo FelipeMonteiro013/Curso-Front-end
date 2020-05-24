@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +14,36 @@ body {
 
 h1 {
     text-align: center;
+}
+
+header#main-header{
+    width: 100%;
+    height: 60px;
+    background-color: #0059C1;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+header .logo {
+    font-size: 30px;
+    font-family: Anton;
+}
+
+header button {
+    width: 50px;
+    height: 50px;
+
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
 }
 
 input {
