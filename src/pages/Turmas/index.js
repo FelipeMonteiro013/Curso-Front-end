@@ -13,7 +13,8 @@ export default function Turmas(){
         api.get(`/${curso_id}/turmas`,{}).then(response=>{
             setTurmas(response.data)
         })
-    },[])
+    },[curso_id])
+    // [] estava vazio
 
     return (
         <div className="container-turma">

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../services/api'
 import './styles.css';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 const name = localStorage.getItem('employee_name');
 
@@ -40,8 +40,9 @@ export default function Cursos(){
         history.push(`/${curso_id}/turmas`);
     }
 
-    async function sendAdicinarCurso(){
-        history.push('/curso/adicionar');
+    async function sendUpdate(course_id){
+        history.push(`/curso/${course_id}`)
+        
     }
 
     async function handleLogout(){
@@ -52,15 +53,17 @@ export default function Cursos(){
     return (
         <div className="container">
             <header id='main-header'>
-                <div className="logo">L O G O</div>
-                <p>Oi {name}</p> 
+                <Link to="/cursos">
+                    <div className="logo">L O G O</div>
+                </Link>
+                <p>Olá {name}</p> 
                 <button onClick={handleLogout}>sair</button>
             </header>
             <div className="container-course"> 
-                <div className="list">
                 <h1>Cursos</h1> 
+                <div className="list">
                     <div className="list-header">
-                        <button className="adicinar" onClick={()=> sendAdicinarCurso()}>Adicinar Curso</button>
+                        <Link className="adicinar" to='/curso/adicionar'>Adicinar Curso</Link>
                     </div>
                     {cursos.map(curso=>(
                         <ul key={curso.id}>
@@ -72,7 +75,7 @@ export default function Cursos(){
                             </div>
                             <div className="item-options">
                                 <button className="view" onClick={()=> sendTurmas(curso.id)}>Ver</button>
-                                {/* <button className="edit" disabled>Editar</button> */}
+                                <button className="edit" onClick={()=> sendUpdate(curso.id)}>Editar</button>
                                 <button className="delete" onClick={()=> handleDeleteCurso(curso.id)}>Excluir</button>
                             </div>                        
                     </ul>
