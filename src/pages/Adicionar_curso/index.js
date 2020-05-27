@@ -10,10 +10,7 @@ export default function AdicionarCurso(){
 
     const params = useParams(URLSearchParams);
     const course_id = params.course_id;
-
-    console.log(course_id);
-    
-
+  
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const history = useHistory();
@@ -37,9 +34,9 @@ export default function AdicionarCurso(){
         e.preventDefault();
 
         const data = {name, description}
-
+        
         try {
-            await api.put(`curso/${course_id}`,  data);
+            await api.put(`cursos/${course_id}`,  data);
             alert('Curso att com sucesso !');
             history.push('/cursos');
             
