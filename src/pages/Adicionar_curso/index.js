@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles.css';
 import api from '../../services/api';
 import {useHistory, useParams, Link} from 'react-router-dom';
@@ -11,14 +11,7 @@ export default function AdicionarCurso(){
     const params = useParams(URLSearchParams);
     const course_id = params.course_id;
 
-    if(course_id == null){
-        alert('null');
-    }else{
-        async function teste(){
-            const response = await api.get(`/cursos/${course_id}`)
-        console.log(response);
-        }
-    }
+    console.log(course_id);
     
 
     const [name, setName] = useState('');
@@ -40,12 +33,39 @@ export default function AdicionarCurso(){
             
         }
     }
+    async function handleEdit(e){
+        e.preventDefault();
 
+        const data = {name, description}
+
+        try {
+            await api.put(`curso/${course_id}`,  data);
+            alert('Curso att com sucesso !');
+            history.push('/cursos');
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async function toEdit(){
+        try{
+            const response = await api.get(`/cursos/${course_id}`);
+            setName(response.data.name);
+            setDescription(response.data.description);
+        }catch(err){
+            console.log(err);           
+        }
+        
+    }
     async function handleLogout(){
         localStorage.clear();
         history.push('/');
     }
-
+    useEffect(()=>{
+        toEdit()
+    },[]);
+    
+    
     return (       
         <div className="container">
             <header id='main-header'>
@@ -62,9 +82,9 @@ export default function AdicionarCurso(){
                 </Link>
             </div>
             <div className="content-addCurso">
-                <form onSubmit={handleCreate}>
+                <form onSubmit={course_id !== undefined ? handleEdit : handleCreate}>
                     <p>Nome do curso</p>
-                    <input required value={name} onChange={e=>{setName(e.target.value)}} />
+                    <input required value={name}  onChange={e=>{setName(e.target.value)}} />
                     <p>Descrição do curso</p>
                     <textarea required value={description} onChange={e=>{setDescription(e.target.value)}}></textarea>
                     <button className="adicinar" type="submit">Salvar</button>
