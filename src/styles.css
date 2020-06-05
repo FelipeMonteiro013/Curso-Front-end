@@ -47,7 +47,7 @@ header button {
     overflow: auto;
 }
 
-input {
+input, select{
     width: 360px;
     height: 32px;
     border-radius: 5px;

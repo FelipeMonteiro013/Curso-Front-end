@@ -35,7 +35,7 @@ export default function Turmas(){
             </header>
             <h1>Turmas</h1>
             <div className="voltar">
-                <Link to="#" className="adicinar">
+                <Link to="/turma/adicionar" className="adicinar">
                     Adicionar turma
                 </Link>
                 <Link to="/cursos" className="back-button">
@@ -55,8 +55,8 @@ export default function Turmas(){
                         </div>
                         <div className="item-options-class">
                             <button className="view">Ver</button>
-                            <button className="edit">Editar</button> 
-                            <button className="delete">Excluir</button>
+                            {/* <button className="edit">Editar</button> 
+                            <button className="delete">Excluir</button> */}
                         </div>
                     </div>
                     ))}
